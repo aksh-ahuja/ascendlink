@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AscendLink Technologies Private Limited</title>
-    <meta name="description" content="AscendLink Technologies builds products that connect humanity and technology. Makers of Quasarz. Based in Gurgaon, India.">
+    <meta name="description" content="AscendLink Technologies builds products for the creator economy. Makers of Peerseek and Growlee. Based in Gurgaon, India.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0a0f0d;
-            --bg-raised: #101714;
-            --ink: #e9efeb;
-            --ink-dim: #9db0a6;
-            --line: rgba(233, 239, 235, 0.1);
-            --accent: #5ee6a8;
-            --accent-deep: #17442f;
-            --serif: "Fraunces", Georgia, serif;
-            --sans: "Instrument Sans", -apple-system, sans-serif;
+            --heading: #061b31;
+            --body: #64748d;
+            --label: #273951;
+            --accent: #0d9488;
+            --accent-hover: #0b7c72;
+            --accent-tint: rgba(13, 148, 136, 0.06);
+            --border: #e5edf5;
+            --dark: #0d2137;
+            --shadow-far: rgba(50, 50, 93, 0.25) 0px 30px 45px -30px;
+            --shadow-near: rgba(0, 0, 0, 0.1) 0px 18px 36px -18px;
+            --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,219 +29,342 @@
 
         body {
             font-family: var(--sans);
-            background: var(--bg);
-            color: var(--ink);
-            line-height: 1.6;
+            font-weight: 400;
+            background: #ffffff;
+            color: var(--body);
+            line-height: 1.4;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        /* ambient glow */
-        .glow {
-            position: fixed;
-            top: -30vh;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90vw;
-            height: 70vh;
-            background: radial-gradient(ellipse at center, rgba(94, 230, 168, 0.13), transparent 65%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* grain */
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 1;
-        }
-
         .wrap {
-            position: relative;
-            z-index: 2;
-            max-width: 880px;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
-        header {
+        /* ---- Angled gradient hero backdrop (Stripe-style) ---- */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 620px;
+            background: linear-gradient(100deg, #e8fbf8 8%, #d3f4ef 30%, #e0f2fb 55%, #eef4ff 80%, #ffffff 100%);
+            transform: skewY(-6deg);
+            transform-origin: top left;
+            z-index: -2;
+        }
+
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 220px;
+            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #ffffff 100%);
+        }
+
+        .hero-stripe-1, .hero-stripe-2 {
+            position: absolute;
+            height: 40px;
+            transform: skewY(-6deg);
+            transform-origin: top left;
+            z-index: -1;
+        }
+
+        .hero-stripe-1 {
+            top: 540px;
+            left: 0;
+            width: 26%;
+            background: linear-gradient(90deg, rgba(13,148,136,0) 0%, rgba(13,148,136,0.25) 100%);
+        }
+
+        .hero-stripe-2 {
+            top: 76px;
+            right: 0;
+            width: 28%;
+            background: linear-gradient(90deg, rgba(56,132,255,0.28) 0%, rgba(56,132,255,0) 100%);
+        }
+
+        /* ---- Nav ---- */
+        .nav-shell {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.75);
+        }
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 32px 0;
-            animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+            padding: 18px 0;
         }
 
         .wordmark {
-            font-family: var(--serif);
+            font-size: 20px;
             font-weight: 600;
-            font-size: 1.15rem;
-            letter-spacing: 0.01em;
-            color: var(--ink);
+            letter-spacing: -0.3px;
+            color: var(--heading);
             text-decoration: none;
         }
 
         .wordmark span { color: var(--accent); }
 
-        .header-mail {
-            font-size: 0.85rem;
-            color: var(--ink-dim);
-            text-decoration: none;
-            border: 1px solid var(--line);
-            padding: 8px 16px;
-            border-radius: 999px;
-            transition: color 0.25s, border-color 0.25s;
-        }
-
-        .header-mail:hover { color: var(--accent); border-color: var(--accent-deep); }
-
-        .hero { padding: 13vh 0 10vh; }
-
-        .kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.78rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: var(--ink-dim);
-            margin-bottom: 28px;
-            animation: rise 0.9s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-
-        .kicker::before {
-            content: "";
-            width: 28px;
-            height: 1px;
+        .nav-cta {
+            font-size: 15px;
+            font-weight: 500;
+            color: #ffffff;
             background: var(--accent);
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 4px;
+            transition: background 0.15s;
+        }
+
+        .nav-cta:hover { background: var(--accent-hover); }
+
+        /* ---- Hero ---- */
+        .hero-section { position: relative; }
+
+        .hero {
+            padding: 96px 0 140px;
+            max-width: 640px;
+        }
+
+        .eyebrow {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+            animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         h1 {
-            font-family: var(--serif);
-            font-weight: 380;
-            font-size: clamp(2.6rem, 7vw, 4.6rem);
+            font-size: clamp(40px, 6vw, 56px);
+            font-weight: 300;
             line-height: 1.06;
-            letter-spacing: -0.015em;
-            animation: rise 0.9s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-
-        h1 em {
-            font-style: italic;
-            color: var(--accent);
+            letter-spacing: -1.4px;
+            color: var(--heading);
+            animation: rise 0.7s 0.08s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         .hero p {
-            max-width: 54ch;
-            margin-top: 28px;
-            font-size: 1.08rem;
-            color: var(--ink-dim);
-            animation: rise 0.9s 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+            margin-top: 24px;
+            font-size: 19px;
+            font-weight: 300;
+            line-height: 1.5;
+            max-width: 46ch;
+            animation: rise 0.7s 0.16s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
-        section { padding: 56px 0; border-top: 1px solid var(--line); }
+        .hero-actions {
+            margin-top: 32px;
+            display: flex;
+            gap: 12px;
+            animation: rise 0.7s 0.24s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
 
-        .section-label {
-            font-size: 0.78rem;
-            letter-spacing: 0.22em;
+        .btn-primary {
+            font-size: 16px;
+            font-weight: 500;
+            color: #ffffff;
+            background: var(--accent);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 4px;
+            transition: background 0.15s, transform 0.15s;
+        }
+
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+        .btn-ghost {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 4px;
+            border: 1px solid rgba(13, 148, 136, 0.35);
+            transition: background 0.15s;
+        }
+
+        .btn-ghost:hover { background: var(--accent-tint); }
+
+        /* ---- Products ---- */
+        .products { padding: 24px 0 120px; }
+
+        .section-eyebrow {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--ink-dim);
-            margin-bottom: 32px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: -0.64px;
+            line-height: 1.1;
+            color: var(--heading);
+            margin-bottom: 44px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
         }
 
         .product-card {
-            display: block;
+            display: flex;
+            flex-direction: column;
             text-decoration: none;
-            color: inherit;
-            background: var(--bg-raised);
-            border: 1px solid var(--line);
-            border-radius: 20px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
             padding: 36px;
-            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--shadow-far), var(--shadow-near);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .product-card:hover {
-            border-color: var(--accent-deep);
-            transform: translateY(-3px);
-            box-shadow: 0 24px 60px -30px rgba(94, 230, 168, 0.25);
+            transform: translateY(-4px);
+            box-shadow: rgba(50, 50, 93, 0.3) 0px 40px 60px -30px, rgba(0, 0, 0, 0.12) 0px 24px 44px -18px;
         }
 
-        .product-top {
+        .product-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 16px;
-            margin-bottom: 14px;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 22px;
         }
+
+        .icon-peerseek { background: linear-gradient(135deg, #0d9488, #14b8a6); }
+        .icon-growlee { background: linear-gradient(135deg, #2563eb, #38bdf8); }
 
         .product-name {
-            font-family: var(--serif);
-            font-size: 1.7rem;
+            font-size: 26px;
+            font-weight: 400;
+            letter-spacing: -0.26px;
+            color: var(--heading);
+        }
+
+        .product-domain {
+            font-size: 14px;
             font-weight: 500;
-        }
-
-        .product-arrow {
             color: var(--accent);
-            font-size: 1.2rem;
-            transition: transform 0.3s;
+            margin: 4px 0 14px;
         }
 
-        .product-card:hover .product-arrow { transform: translate(4px, -4px); }
+        .product-card p {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.5;
+            color: var(--body);
+        }
 
-        .product-card p { color: var(--ink-dim); max-width: 62ch; }
+        .product-link {
+            margin-top: 22px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .product-link .arrow {
+            display: inline-block;
+            transition: transform 0.15s;
+        }
+
+        .product-card:hover .product-link .arrow { transform: translateX(4px); }
+
+        /* ---- Dark contact section ---- */
+        .contact {
+            background: var(--dark);
+            padding: 96px 0;
+        }
+
+        .contact .section-eyebrow { color: #2dd4bf; }
+
+        .contact .section-title { color: #ffffff; margin-bottom: 40px; }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 32px;
         }
 
         .contact-block {
-            background: var(--bg-raised);
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 32px 36px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 30px 34px;
         }
 
         .contact-block h3 {
-            font-size: 0.78rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
+            font-size: 13px;
             font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 16px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #2dd4bf;
+            margin-bottom: 12px;
         }
 
         .contact-block p, .contact-block a {
-            color: var(--ink-dim);
-            font-size: 0.98rem;
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.75);
             text-decoration: none;
         }
 
-        .contact-block a:hover { color: var(--accent); }
+        .contact-block a:hover { color: #2dd4bf; }
 
+        /* ---- Footer ---- */
         footer {
-            padding: 40px 0 56px;
-            border-top: 1px solid var(--line);
+            background: var(--dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 28px 0;
+        }
+
+        .footer-inner {
             display: flex;
             justify-content: space-between;
             gap: 16px;
             flex-wrap: wrap;
-            font-size: 0.85rem;
-            color: var(--ink-dim);
+            font-size: 14px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.5);
         }
 
         @keyframes rise {
-            from { opacity: 0; transform: translateY(24px); }
+            from { opacity: 0; transform: translateY(18px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @media (max-width: 640px) {
-            .hero { padding: 9vh 0 8vh; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .product-card, .contact-block { padding: 28px 24px; }
+        @media (max-width: 720px) {
+            .wrap { padding: 0 20px; }
+            .hero { padding: 64px 0 96px; }
+            h1 { letter-spacing: -0.8px; }
+            .products { padding-bottom: 88px; }
+            .contact { padding: 72px 0; }
+            .product-grid, .contact-grid { grid-template-columns: 1fr; }
+            .product-card { padding: 28px 24px; }
+            .contact-block { padding: 24px; }
+            .hero-bg { height: 560px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -248,34 +373,60 @@
     </style>
 </head>
 <body>
-    <div class="glow"></div>
+    <div class="nav-shell">
+        <div class="wrap">
+            <nav>
+                <a class="wordmark" href="/">Ascend<span>Link</span></a>
+                <a class="nav-cta" href="mailto:business@ascendlink.org">Contact us</a>
+            </nav>
+        </div>
+    </div>
 
-    <div class="wrap">
-        <header>
-            <a class="wordmark" href="/">Ascend<span>Link</span></a>
-            <a class="header-mail" href="mailto:business@ascendlink.org">business@ascendlink.org</a>
-        </header>
-
-        <main>
-            <div class="hero">
-                <div class="kicker">AscendLink Technologies</div>
-                <h1>Connecting <em>humanity</em> and technology.</h1>
-                <p>We build products that bridge the gap between human needs and technological advancement. Thoughtfully designed, carefully engineered, and made to bring people closer to the tools that serve them.</p>
-            </div>
-
-            <section>
-                <div class="section-label">Our Products</div>
-                <a class="product-card" href="https://quasarz.io" target="_blank" rel="noopener">
-                    <div class="product-top">
-                        <div class="product-name">Quasarz</div>
-                        <div class="product-arrow">&#8599;</div>
+    <main>
+        <div class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-stripe-1"></div>
+            <div class="hero-stripe-2"></div>
+            <div class="wrap">
+                <div class="hero">
+                    <div class="eyebrow">AscendLink Technologies</div>
+                    <h1>Infrastructure for the creator economy</h1>
+                    <p>We design and engineer products that help creators earn from their audience, work with brands, and grow on their own terms.</p>
+                    <div class="hero-actions">
+                        <a class="btn-primary" href="mailto:business@ascendlink.org">Get in touch</a>
+                        <a class="btn-ghost" href="#products">Explore products</a>
                     </div>
-                    <p>A knowledge-sharing platform where creators, professionals, and experts offer 1:1 services via video calls and chat, monetize their skills, and build meaningful connections.</p>
-                </a>
-            </section>
+                </div>
+            </div>
+        </div>
 
-            <section>
-                <div class="section-label">Get in Touch</div>
+        <section class="products" id="products">
+            <div class="wrap">
+                <div class="section-eyebrow">Products</div>
+                <h2 class="section-title">Two products. One mission.</h2>
+                <div class="product-grid">
+                    <a class="product-card" href="https://peerseek.io" target="_blank" rel="noopener">
+                        <div class="product-icon icon-peerseek">P</div>
+                        <div class="product-name">Peerseek</div>
+                        <div class="product-domain">peerseek.io</div>
+                        <p>The all-in-one platform where creators earn from their followers. Paid 1:1 consultations, webinars, courses, and digital products, with payments, scheduling, and delivery handled end to end.</p>
+                        <div class="product-link">Visit Peerseek <span class="arrow">&rarr;</span></div>
+                    </a>
+                    <a class="product-card" href="https://growlee.site" target="_blank" rel="noopener">
+                        <div class="product-icon icon-growlee">G</div>
+                        <div class="product-name">Growlee</div>
+                        <div class="product-domain">growlee.site</div>
+                        <p>An AI agent that connects Instagram creators with brand deals. It pitches matching brands on the creator's behalf and shows the exact payment split before any deal is accepted.</p>
+                        <div class="product-link">Visit Growlee <span class="arrow">&rarr;</span></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="wrap">
+                <div class="section-eyebrow">Get in touch</div>
+                <h2 class="section-title">We would love to hear from you.</h2>
                 <div class="contact-grid">
                     <div class="contact-block">
                         <h3>Office</h3>
@@ -288,13 +439,15 @@
                         <p><a href="mailto:business@ascendlink.org">business@ascendlink.org</a></p>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
+    </main>
 
-        <footer>
+    <footer>
+        <div class="wrap footer-inner">
             <div>&copy; 2026 AscendLink Technologies Private Limited</div>
             <div>Gurgaon, India</div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 </body>
 </html>
