@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AscendLink Technologies Private Limited</title>
-    <meta name="description" content="AscendLink Technologies builds products for the creator economy. Makers of Peerseek and Growlee. Based in Gurgaon, India.">
+    <meta name="description" content="AscendLink Technologies builds products that connect humanity and technology. Makers of Peerseek and Growlee. Based in Gurgaon, India.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --heading: #061b31;
-            --body: #64748d;
-            --label: #273951;
-            --accent: #0d9488;
-            --accent-hover: #0b7c72;
-            --accent-tint: rgba(13, 148, 136, 0.06);
-            --border: #e5edf5;
-            --dark: #0d2137;
-            --shadow-far: rgba(50, 50, 93, 0.25) 0px 30px 45px -30px;
-            --shadow-near: rgba(0, 0, 0, 0.1) 0px 18px 36px -18px;
-            --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+            --background: #f8f7f3;
+            --foreground: #16161a;
+            --muted: #6f6f7a;
+            --card: #ffffff;
+            --border: #e9e8e3;
+            --cta: #0f766e;
+            --cta-hover: #0c5f59;
+            --shadow-card: 0 1px 2px rgba(2, 6, 23, 0.04), 0 4px 16px rgba(2, 6, 23, 0.07);
+            --shadow-lift: 0 18px 50px rgba(15, 23, 42, 0.12);
+            --display: "Jost", "Futura", sans-serif;
+            --ui: "Geist", -apple-system, sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,405 +28,403 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: var(--sans);
-            font-weight: 400;
-            background: #ffffff;
-            color: var(--body);
-            line-height: 1.4;
+            font-family: var(--ui);
+            background: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
         }
 
         .wrap {
-            max-width: 1080px;
+            max-width: 1120px;
             margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* ---- Angled gradient hero backdrop (Stripe-style) ---- */
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 620px;
-            background: linear-gradient(100deg, #e8fbf8 8%, #d3f4ef 30%, #e0f2fb 55%, #eef4ff 80%, #ffffff 100%);
-            transform: skewY(-6deg);
-            transform-origin: top left;
-            z-index: -2;
-        }
-
-        .hero-bg::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 220px;
-            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #ffffff 100%);
-        }
-
-        .hero-stripe-1, .hero-stripe-2 {
-            position: absolute;
-            height: 40px;
-            transform: skewY(-6deg);
-            transform-origin: top left;
-            z-index: -1;
-        }
-
-        .hero-stripe-1 {
-            top: 540px;
-            left: 0;
-            width: 26%;
-            background: linear-gradient(90deg, rgba(13,148,136,0) 0%, rgba(13,148,136,0.25) 100%);
-        }
-
-        .hero-stripe-2 {
-            top: 76px;
-            right: 0;
-            width: 28%;
-            background: linear-gradient(90deg, rgba(56,132,255,0.28) 0%, rgba(56,132,255,0) 100%);
+            padding: 0 24px;
         }
 
         /* ---- Nav ---- */
-        .nav-shell {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.75);
-        }
-
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 0;
+            padding: 26px 0;
         }
 
         .wordmark {
-            font-size: 20px;
+            font-family: var(--display);
+            font-size: 21px;
             font-weight: 600;
-            letter-spacing: -0.3px;
-            color: var(--heading);
+            letter-spacing: -0.01em;
+            color: var(--foreground);
             text-decoration: none;
         }
 
-        .wordmark span { color: var(--accent); }
+        .wordmark span { color: var(--cta); }
 
         .nav-cta {
-            font-size: 15px;
-            font-weight: 500;
-            color: #ffffff;
-            background: var(--accent);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--foreground);
+            background: var(--card);
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 2px rgba(2, 6, 23, 0.04);
             text-decoration: none;
-            padding: 8px 18px;
-            border-radius: 4px;
-            transition: background 0.15s;
+            padding: 9px 20px;
+            border-radius: 999px;
+            transition: box-shadow 0.2s, transform 0.2s;
         }
 
-        .nav-cta:hover { background: var(--accent-hover); }
+        .nav-cta:hover { box-shadow: var(--shadow-card); transform: translateY(-1px); }
 
         /* ---- Hero ---- */
-        .hero-section { position: relative; }
-
         .hero {
-            padding: 96px 0 140px;
-            max-width: 640px;
+            text-align: center;
+            padding: 88px 0 104px;
         }
 
-        .eyebrow {
-            font-size: 15px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 16px;
-            animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+        .chip-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            animation: fadeUp 0.6s ease-out both;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--muted);
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 5px 13px;
+            border-radius: 999px;
+        }
+
+        .chip .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #10b981;
+            animation: pulse 2s ease-in-out infinite;
         }
 
         h1 {
-            font-size: clamp(40px, 6vw, 56px);
-            font-weight: 300;
-            line-height: 1.06;
-            letter-spacing: -1.4px;
-            color: var(--heading);
-            animation: rise 0.7s 0.08s cubic-bezier(0.22, 1, 0.36, 1) both;
+            font-family: var(--display);
+            font-size: clamp(42px, 6.4vw, 72px);
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: -0.025em;
+            text-wrap: balance;
+            max-width: 17ch;
+            margin: 0 auto;
+            animation: fadeUp 0.6s 0.08s ease-out both;
         }
 
-        .hero p {
-            margin-top: 24px;
-            font-size: 19px;
-            font-weight: 300;
-            line-height: 1.5;
-            max-width: 46ch;
-            animation: rise 0.7s 0.16s cubic-bezier(0.22, 1, 0.36, 1) both;
+        .tagline {
+            font-size: clamp(16px, 2.2vw, 20px);
+            color: var(--muted);
+            letter-spacing: 0.01em;
+            text-wrap: balance;
+            max-width: 56ch;
+            margin: 22px auto 0;
+            animation: fadeUp 0.6s 0.16s ease-out both;
         }
 
         .hero-actions {
-            margin-top: 32px;
             display: flex;
+            justify-content: center;
             gap: 12px;
-            animation: rise 0.7s 0.24s cubic-bezier(0.22, 1, 0.36, 1) both;
+            margin-top: 36px;
+            animation: fadeUp 0.6s 0.24s ease-out both;
         }
 
         .btn-primary {
-            font-size: 16px;
-            font-weight: 500;
-            color: #ffffff;
-            background: var(--accent);
-            text-decoration: none;
-            padding: 10px 22px;
-            border-radius: 4px;
-            transition: background 0.15s, transform 0.15s;
-        }
-
-        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
-
-        .btn-ghost {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 22px;
-            border-radius: 4px;
-            border: 1px solid rgba(13, 148, 136, 0.35);
-            transition: background 0.15s;
-        }
-
-        .btn-ghost:hover { background: var(--accent-tint); }
-
-        /* ---- Products ---- */
-        .products { padding: 24px 0 120px; }
-
-        .section-eyebrow {
-            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
             font-weight: 600;
-            letter-spacing: 0.12em;
+            color: #ffffff;
+            background: var(--cta);
+            text-decoration: none;
+            padding: 12px 26px;
+            border-radius: 999px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-primary:hover { background: var(--cta-hover); transform: translateY(-1px); }
+
+        .btn-primary .arrow { transition: transform 0.2s; }
+        .btn-primary:hover .arrow { transform: translateX(3px); }
+
+        .btn-secondary {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--foreground);
+            background: var(--card);
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 2px rgba(2, 6, 23, 0.04);
+            text-decoration: none;
+            padding: 12px 26px;
+            border-radius: 999px;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .btn-secondary:hover { box-shadow: var(--shadow-card); transform: translateY(-1px); }
+
+        /* ---- Divider ---- */
+        .hairline {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+
+        /* ---- Sections ---- */
+        section { padding: 96px 0; }
+
+        .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 10px;
+            color: var(--muted);
+            margin-bottom: 14px;
         }
 
         .section-title {
-            font-size: 32px;
-            font-weight: 300;
-            letter-spacing: -0.64px;
+            font-family: var(--display);
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 600;
+            letter-spacing: -0.02em;
             line-height: 1.1;
-            color: var(--heading);
+            text-wrap: balance;
             margin-bottom: 44px;
         }
 
+        /* ---- Product cards ---- */
         .product-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 32px;
+            gap: 28px;
         }
 
         .product-card {
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
             text-decoration: none;
-            background: #ffffff;
+            color: inherit;
+            background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 36px;
-            box-shadow: var(--shadow-far), var(--shadow-near);
-            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 20px;
+            padding: 38px;
+            box-shadow: var(--shadow-card);
+            transition: box-shadow 0.25s, transform 0.25s;
         }
 
         .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: rgba(50, 50, 93, 0.3) 0px 40px 60px -30px, rgba(0, 0, 0, 0.12) 0px 24px 44px -18px;
+            box-shadow: var(--shadow-lift);
+            transform: translateY(-3px);
         }
 
         .product-logo {
-            height: 44px;
+            height: 46px;
             width: auto;
             display: block;
-            align-self: flex-start;
-            margin-bottom: 22px;
+            margin-bottom: 24px;
         }
 
         .product-name {
-            font-size: 26px;
-            font-weight: 400;
-            letter-spacing: -0.26px;
-            color: var(--heading);
+            font-family: var(--display);
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         .product-domain {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
-            color: var(--accent);
-            margin: 4px 0 14px;
+            color: var(--cta);
+            margin: 2px 0 14px;
         }
 
         .product-card p {
-            font-size: 16px;
-            font-weight: 300;
-            line-height: 1.5;
-            color: var(--body);
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--muted);
         }
 
         .product-link {
-            margin-top: 22px;
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 26px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--foreground);
+            background: var(--background);
+            border: 1px solid var(--border);
+            padding: 9px 20px;
+            border-radius: 999px;
+            transition: background 0.2s;
         }
 
-        .product-link .arrow {
-            display: inline-block;
-            transition: transform 0.15s;
-        }
+        .product-card:hover .product-link { background: #f0efe9; }
 
-        .product-card:hover .product-link .arrow { transform: translateX(4px); }
+        .product-link .arrow { transition: transform 0.2s; }
+        .product-card:hover .product-link .arrow { transform: translateX(3px); }
 
-        /* ---- Dark contact section ---- */
-        .contact {
-            background: var(--dark);
-            padding: 96px 0;
-        }
-
-        .contact .section-eyebrow { color: #2dd4bf; }
-
-        .contact .section-title { color: #ffffff; margin-bottom: 40px; }
-
+        /* ---- Contact ---- */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 32px;
+            gap: 28px;
         }
 
         .contact-block {
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 8px;
-            padding: 30px 34px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 34px 38px;
+            box-shadow: var(--shadow-card);
         }
 
         .contact-block h3 {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: #2dd4bf;
-            margin-bottom: 12px;
+            color: var(--muted);
+            margin-bottom: 14px;
         }
 
         .contact-block p, .contact-block a {
-            font-size: 17px;
-            font-weight: 300;
-            line-height: 1.55;
-            color: rgba(255, 255, 255, 0.75);
+            font-size: 16px;
+            line-height: 1.65;
+            color: var(--foreground);
             text-decoration: none;
         }
 
-        .contact-block a:hover { color: #2dd4bf; }
+        .contact-block a { font-weight: 500; }
+        .contact-block a:hover { color: var(--cta); }
 
         /* ---- Footer ---- */
-        footer {
-            background: var(--dark);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 28px 0;
-        }
+        footer { padding: 34px 0 44px; }
 
         .footer-inner {
             display: flex;
             justify-content: space-between;
             gap: 16px;
             flex-wrap: wrap;
-            font-size: 14px;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.5);
+            font-size: 13.5px;
+            color: var(--muted);
         }
 
-        @keyframes rise {
-            from { opacity: 0; transform: translateY(18px); }
+        /* ---- Reveal on scroll ---- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-d1 { transition-delay: 0.08s; }
+        .reveal-d2 { transition-delay: 0.16s; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(14px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
         @media (max-width: 720px) {
-            .wrap { padding: 0 20px; }
-            .hero { padding: 64px 0 96px; }
-            h1 { letter-spacing: -0.8px; }
-            .products { padding-bottom: 88px; }
-            .contact { padding: 72px 0; }
+            .hero { padding: 56px 0 72px; }
+            section { padding: 64px 0; }
             .product-grid, .contact-grid { grid-template-columns: 1fr; }
-            .product-card { padding: 28px 24px; }
-            .contact-block { padding: 24px; }
-            .hero-bg { height: 560px; }
+            .product-card { padding: 28px 26px; }
+            .contact-block { padding: 26px; }
+            .hero-actions { flex-direction: column; align-items: center; }
         }
 
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation: none !important; transition: none !important; }
+            .reveal { opacity: 1; transform: none; }
         }
     </style>
 </head>
 <body>
-    <div class="nav-shell">
-        <div class="wrap">
-            <nav>
-                <a class="wordmark" href="/">Ascend<span>Link</span></a>
-                <a class="nav-cta" href="mailto:business@ascendlink.org">Contact us</a>
-            </nav>
-        </div>
+    <div class="wrap">
+        <nav>
+            <a class="wordmark" href="/">Ascend<span>Link</span></a>
+            <a class="nav-cta" href="mailto:business@ascendlink.org">Contact us</a>
+        </nav>
     </div>
 
     <main>
-        <div class="hero-section">
-            <div class="hero-bg"></div>
-            <div class="hero-stripe-1"></div>
-            <div class="hero-stripe-2"></div>
-            <div class="wrap">
-                <div class="hero">
-                    <div class="eyebrow">AscendLink Technologies</div>
-                    <h1>Connecting humanity and technology</h1>
-                    <p>We are on a mission to connect humanity and technology through innovative solutions. We build cutting-edge products that bridge the gap between human needs and technological advancement.</p>
-                    <div class="hero-actions">
-                        <a class="btn-primary" href="mailto:business@ascendlink.org">Get in touch</a>
-                        <a class="btn-ghost" href="#products">Explore products</a>
-                    </div>
+        <div class="wrap">
+            <div class="hero">
+                <div class="chip-row">
+                    <span class="chip"><span class="dot"></span>Building since 2024</span>
+                    <span class="chip">Gurgaon, India</span>
+                </div>
+                <h1>Connecting humanity and technology</h1>
+                <p class="tagline">We are on a mission to connect humanity and technology through innovative solutions. We build products that bridge the gap between human needs and technological advancement.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="mailto:business@ascendlink.org">Get in touch <span class="arrow">&rarr;</span></a>
+                    <a class="btn-secondary" href="#products">See our products</a>
                 </div>
             </div>
         </div>
 
-        <section class="products" id="products">
+        <div class="wrap"><div class="hairline"></div></div>
+
+        <section id="products">
             <div class="wrap">
-                <div class="section-eyebrow">Creator Economy</div>
-                <h2 class="section-title">Products built for creators</h2>
+                <div class="eyebrow reveal">Creator Economy</div>
+                <h2 class="section-title reveal">Products built for creators</h2>
                 <div class="product-grid">
-                    <a class="product-card" href="https://peerseek.io" target="_blank" rel="noopener">
+                    <a class="product-card reveal" href="https://peerseek.io" target="_blank" rel="noopener">
                         <img class="product-logo" src="assets/peerseek-icon.svg" alt="Peerseek logo">
                         <div class="product-name">Peerseek</div>
                         <div class="product-domain">peerseek.io</div>
                         <p>The all-in-one platform where creators earn from their followers. Paid 1:1 consultations, webinars, courses, and digital products, with payments, scheduling, and delivery handled end to end.</p>
-                        <div class="product-link">Visit Peerseek <span class="arrow">&rarr;</span></div>
+                        <span class="product-link">Visit Peerseek <span class="arrow">&rarr;</span></span>
                     </a>
-                    <a class="product-card" href="https://growlee.site" target="_blank" rel="noopener">
+                    <a class="product-card reveal reveal-d1" href="https://growlee.site" target="_blank" rel="noopener">
                         <img class="product-logo" src="assets/growlee-logo.svg" alt="Growlee logo">
                         <div class="product-name">Growlee</div>
                         <div class="product-domain">growlee.site</div>
                         <p>An AI agent that connects Instagram creators with brand deals. It pitches matching brands on the creator's behalf and shows the exact payment split before any deal is accepted.</p>
-                        <div class="product-link">Visit Growlee <span class="arrow">&rarr;</span></div>
+                        <span class="product-link">Visit Growlee <span class="arrow">&rarr;</span></span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <section class="contact">
+        <div class="wrap"><div class="hairline"></div></div>
+
+        <section id="contact">
             <div class="wrap">
-                <div class="section-eyebrow">Get in touch</div>
-                <h2 class="section-title">We would love to hear from you.</h2>
+                <div class="eyebrow reveal">Get in touch</div>
+                <h2 class="section-title reveal">We would love to hear from you</h2>
                 <div class="contact-grid">
-                    <div class="contact-block">
+                    <div class="contact-block reveal">
                         <h3>Office</h3>
                         <p>Innov8 UCP, 9th Floor, Tower D,<br>
                         Unitech Cyber Park, Sector 39,<br>
                         Gurgaon, Haryana 122001</p>
                     </div>
-                    <div class="contact-block">
+                    <div class="contact-block reveal reveal-d1">
                         <h3>Email</h3>
                         <p><a href="mailto:business@ascendlink.org">business@ascendlink.org</a></p>
                     </div>
@@ -435,11 +433,31 @@
         </section>
     </main>
 
+    <div class="wrap"><div class="hairline"></div></div>
+
     <footer>
         <div class="wrap footer-inner">
             <div>&copy; 2026 AscendLink Technologies Private Limited</div>
             <div>Gurgaon, India</div>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("in");
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: "0px 0px -12% 0px" });
+            document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>
