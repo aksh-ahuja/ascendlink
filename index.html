@@ -3,100 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ascendlink Technologies Private Limited</title>
+    <title>AscendLink Technologies Private Limited</title>
+    <meta name="description" content="AscendLink Technologies builds products that connect humanity and technology. Makers of Quasarz. Based in Gurgaon, India.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #0a0f0d;
+            --bg-raised: #101714;
+            --ink: #e9efeb;
+            --ink-dim: #9db0a6;
+            --line: rgba(233, 239, 235, 0.1);
+            --accent: #5ee6a8;
+            --accent-deep: #17442f;
+            --serif: "Fraunces", Georgia, serif;
+            --sans: "Instrument Sans", -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--ink);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        .container {
-            text-align: center;
-            padding: 2rem;
-            max-width: 800px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-out;
+
+        /* ambient glow */
+        .glow {
+            position: fixed;
+            top: -30vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90vw;
+            height: 70vh;
+            background: radial-gradient(ellipse at center, rgba(94, 230, 168, 0.13), transparent 65%);
+            pointer-events: none;
+            z-index: 0;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        /* grain */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
         }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #4CAF50;
+
+        .wrap {
+            position: relative;
+            z-index: 2;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 0;
+            animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
-        .highlight {
-            color: #4CAF50;
-            font-weight: bold;
-        }
-        .contact-info {
-            margin-top: 2rem;
-            padding: 1rem;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-        }
-        .contact-info p {
-            margin: 0.5rem 0;
-        }
-        .products {
-            margin-top: 2rem;
-        }
-        .products h2 {
-            color: #4CAF50;
-            margin-bottom: 1rem;
-        }
-        .products a {
-            color: #4CAF50;
+
+        .wordmark {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.15rem;
+            letter-spacing: 0.01em;
+            color: var(--ink);
             text-decoration: none;
         }
-        .products a:hover {
-            text-decoration: underline;
+
+        .wordmark span { color: var(--accent); }
+
+        .header-mail {
+            font-size: 0.85rem;
+            color: var(--ink-dim);
+            text-decoration: none;
+            border: 1px solid var(--line);
+            padding: 8px 16px;
+            border-radius: 999px;
+            transition: color 0.25s, border-color 0.25s;
         }
-        @media (max-width: 600px) {
-            .container {
-                padding: 1rem;
-                margin: 1rem;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            p {
-                font-size: 1rem;
-            }
+
+        .header-mail:hover { color: var(--accent); border-color: var(--accent-deep); }
+
+        .hero { padding: 13vh 0 10vh; }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            margin-bottom: 28px;
+            animation: rise 0.9s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .kicker::before {
+            content: "";
+            width: 28px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-weight: 380;
+            font-size: clamp(2.6rem, 7vw, 4.6rem);
+            line-height: 1.06;
+            letter-spacing: -0.015em;
+            animation: rise 0.9s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero p {
+            max-width: 54ch;
+            margin-top: 28px;
+            font-size: 1.08rem;
+            color: var(--ink-dim);
+            animation: rise 0.9s 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        section { padding: 56px 0; border-top: 1px solid var(--line); }
+
+        .section-label {
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            margin-bottom: 32px;
+        }
+
+        .product-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: var(--bg-raised);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 36px;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent-deep);
+            transform: translateY(-3px);
+            box-shadow: 0 24px 60px -30px rgba(94, 230, 168, 0.25);
+        }
+
+        .product-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        .product-name {
+            font-family: var(--serif);
+            font-size: 1.7rem;
+            font-weight: 500;
+        }
+
+        .product-arrow {
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-arrow { transform: translate(4px, -4px); }
+
+        .product-card p { color: var(--ink-dim); max-width: 62ch; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .contact-block {
+            background: var(--bg-raised);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 32px 36px;
+        }
+
+        .contact-block h3 {
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .contact-block p, .contact-block a {
+            color: var(--ink-dim);
+            font-size: 0.98rem;
+            text-decoration: none;
+        }
+
+        .contact-block a:hover { color: var(--accent); }
+
+        footer {
+            padding: 40px 0 56px;
+            border-top: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--ink-dim);
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 640px) {
+            .hero { padding: 9vh 0 8vh; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .product-card, .contact-block { padding: 28px 24px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Ascendlink Technologies</h1>
-        <p>We are on a mission to <span class="highlight">connect humanity and technology</span> through innovative solutions.</p>
-        <p>At Ascendlink Technologies, we develop cutting-edge tech products that bridge the gap between human needs and technological advancements.</p>
-        
-        <div class="products">
-            <h2>Our Products</h2>
-            <p><a href="https://quasarz.io" target="_blank"><strong>Quasarz</strong></a> – A knowledge-sharing platform where creators, professionals, and experts can offer 1:1 services via video calls and chat, monetize their skills, and build meaningful connections.</p>
-        </div>
+    <div class="glow"></div>
 
-        <div class="contact-info">
-            <p><strong>Address:</strong><br>
-            WeWork BlueOne Square, 246, Phase IV, Udyog Vihar,<br>
-            Gurugram, Haryana 122016</p>
-            <p><strong>Email:</strong> <a href="mailto:business@ascendlink.org" style="color: #4CAF50;">business@ascendlink.org</a></p>
-        </div>
+    <div class="wrap">
+        <header>
+            <a class="wordmark" href="/">Ascend<span>Link</span></a>
+            <a class="header-mail" href="mailto:business@ascendlink.org">business@ascendlink.org</a>
+        </header>
+
+        <main>
+            <div class="hero">
+                <div class="kicker">AscendLink Technologies</div>
+                <h1>Connecting <em>humanity</em> and technology.</h1>
+                <p>We build products that bridge the gap between human needs and technological advancement. Thoughtfully designed, carefully engineered, and made to bring people closer to the tools that serve them.</p>
+            </div>
+
+            <section>
+                <div class="section-label">Our Products</div>
+                <a class="product-card" href="https://quasarz.io" target="_blank" rel="noopener">
+                    <div class="product-top">
+                        <div class="product-name">Quasarz</div>
+                        <div class="product-arrow">&#8599;</div>
+                    </div>
+                    <p>A knowledge-sharing platform where creators, professionals, and experts offer 1:1 services via video calls and chat, monetize their skills, and build meaningful connections.</p>
+                </a>
+            </section>
+
+            <section>
+                <div class="section-label">Get in Touch</div>
+                <div class="contact-grid">
+                    <div class="contact-block">
+                        <h3>Office</h3>
+                        <p>Innov8 UCP, 9th Floor, Tower D,<br>
+                        Unitech Cyber Park, Sector 39,<br>
+                        Gurgaon, Haryana 122001</p>
+                    </div>
+                    <div class="contact-block">
+                        <h3>Email</h3>
+                        <p><a href="mailto:business@ascendlink.org">business@ascendlink.org</a></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div>&copy; 2026 AscendLink Technologies Private Limited</div>
+            <div>Gurgaon, India</div>
+        </footer>
     </div>
 </body>
 </html>
